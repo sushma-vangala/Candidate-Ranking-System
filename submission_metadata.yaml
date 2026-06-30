@@ -1,0 +1,50 @@
+team_name: "your-team-name-here"
+
+primary_contact:
+  name: "Full Name"
+  email: "primary@example.com"
+  phone: "+91-XXXXXXXXXX"
+
+team_members:
+  - name: "Member 1 Full Name"
+    email: "member1@example.com"
+    role: "ML Engineer"
+
+github_repo: "https://github.com/YOUR_USERNAME/YOUR_REPO"
+sandbox_link: "https://huggingface.co/spaces/YOUR_USERNAME/redrob-ranker"
+reproduce_command: "python3 rank.py --candidates ./candidates.jsonl --embeddings ./embeddings.npy --candidate-ids ./candidate_ids.npy --jd-embedding ./jd_embedding.npy --out ./submission.csv"
+
+compute:
+  platform: "MacBook Pro"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.9"
+  os: "macOS"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: true
+  pre_computation_time_minutes: 8
+
+ai_tools_used:
+  - "Claude"
+
+ai_usage_summary: |
+  Used Claude for architecture discussion, code review, and iterative improvement.
+  All engineering decisions, threshold choices, and design rationale were made by the team.
+  No candidate data was fed to any external LLM.
+
+methodology_summary: |
+  Two-phase hybrid ranking system. Phase 1: rule-based trap detection (honeypots,
+  keyword stuffers, behavioral ghosts). Phase 2: hybrid scoring — MiniLM embedding
+  similarity (40%), skill match with synonym awareness (20%), career fit on work
+  content not employer names (20%), career progression trajectory (10%),
+  behavioral platform signals (15%), education bonus (5%).
+  JD parsed automatically from text — no hardcoded skill lists.
+  Precomputed MiniLM embeddings enable <60s ranking on CPU with no network access.
+
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
