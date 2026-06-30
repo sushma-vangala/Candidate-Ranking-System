@@ -1,7 +1,4 @@
-"""
-precompute_embeddings_compat.py
-Lightweight text builder for TF-IDF fallback (no sentence-transformers needed).
-"""
+
 
 def build_candidate_text_light(c: dict) -> str:
     p = c.get("profile", {})

@@ -1,13 +1,3 @@
-"""
-reasoning.py — Professional, specific reasoning with skill checklist
-====================================================================
-Fixes:
-  Problem 4: No more "Weak match" at rank 78. Instead: contextual language
-             explaining WHY they rank lower (limited retrieval experience, etc.)
-  Problem 7: ✓/✗ skill checklist in every reasoning string.
-  Problem 8: Confidence % included.
-  Problem 5: Note on NDCG/evaluation included for borderline candidates.
-"""
 
 from datetime import date, datetime
 
@@ -129,7 +119,7 @@ def generate_reasoning(candidate: dict, rank: int, score: float,
     if top_matched:
         skill_parts.append(", ".join(top_matched))
     if top_missing:
-        skill_parts.append("missing: " + ", ".join(top_missing))
+        skill_parts.append("Skill gaps: " + ", ".join(top_missing))
     skill_line = " | ".join(skill_parts) if skill_parts else ""
 
     # ── Behavioral highlights ─────────────────────────────────────────────────
@@ -191,8 +181,9 @@ def generate_reasoning(candidate: dict, rank: int, score: float,
     # ── Assemble ──────────────────────────────────────────────────────────────
     reasoning = f"{s1} {s2}".strip()
     reasoning = " ".join(reasoning.split())
-
+    """"
     if len(reasoning) > 290:
         reasoning = reasoning[:287] + "..."
+    """
 
     return reasoning
