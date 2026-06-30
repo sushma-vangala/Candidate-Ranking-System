@@ -88,16 +88,31 @@ def load_top100_candidates():
 @st.cache_data(show_spinner=False)
 def load_uploaded_candidates(file_bytes, filename):
     candidates = []
+
+    # Handle .gz (JSONL.GZ)
     if filename.endswith(".gz"):
-        with gzip.open(io.BytesIO(file_bytes), "rt") as f:
+        with gzip.open(io.BytesIO(file_bytes), "rt", encoding="utf-8") as f:
             for line in f:
                 if line.strip():
                     candidates.append(json.loads(line))
-    else:
-        text = file_bytes.decode("utf-8")
-        for line in text.splitlines():
-            if line.strip():
-                candidates.append(json.loads(line))
+        return candidates
+
+    text = file_bytes.decode("utf-8")
+
+    # Handle .json (JSON array)
+    if filename.endswith(".json"):
+        data = json.loads(text)
+
+        if isinstance(data, list):
+            return data
+        else:
+            return [data]
+
+    # Handle .jsonl
+    for line in text.splitlines():
+        if line.strip():
+            candidates.append(json.loads(line))
+
     return candidates
 
 
