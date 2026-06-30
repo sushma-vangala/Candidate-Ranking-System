@@ -265,7 +265,7 @@ if mode == "Ranked Results":
 else:
     col1, col2 = st.columns(2)
     with col1:
-        cand_file = st.file_uploader("Upload candidates (.jsonl or .jsonl.gz)", type=["jsonl", "gz"])
+        cand_file = st.file_uploader("Upload candidates (.json or .jsonl or .jsonl.gz)", type=["json", "jsonl", "gz"])
     with col2:
         jd_file = st.file_uploader("Upload job description (.docx, .txt or .md)",type=["docx", "txt", "md"])
 
