@@ -257,7 +257,7 @@ st.caption("Hybrid ranking: MiniLM embeddings · Skill synonyms · Career trajec
 if mode == "Ranked Results":
     candidates = load_top100_candidates()
     if not candidates:
-        st.error("data/sample_candidates.json not found.")
+        st.error("data/top100_candidates.json not found.")
         st.stop()
     jd_text = JD_PROFILE["jd_embedding_text"]
     st.info("Top 100 Candidate Recommendations")
@@ -270,7 +270,7 @@ else:
         jd_file = st.file_uploader("Upload job description (.docx, .txt or .md)",type=["docx", "txt", "md"])
 
     if not cand_file:
-        st.info("Upload a candidates file to get started. You can use `sample_candidates.json` from the bundle.")
+        st.info("Upload a candidates file to get started. You can use `top100_candidates.json` from the bundle.")
         st.stop()
 
     candidates = load_uploaded_candidates(cand_file.read(), cand_file.name)
