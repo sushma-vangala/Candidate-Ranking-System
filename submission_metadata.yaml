@@ -1,23 +1,28 @@
-team_name: "your-team-name-here"
+team_name: "Tech_divas"
 
 primary_contact:
-  name: "Full Name"
-  email: "primary@example.com"
-  phone: "+91-XXXXXXXXXX"
+  name: "Vangala Sushma"
+  email: "sushma.vangala3005@gmail.com"
+  phone: "+91-9010067937"
 
 team_members:
-  - name: "Member 1 Full Name"
-    email: "member1@example.com"
+  - name: "Kanumilli Geetha Akshaya"
+    email: "geethaakshaya0272@gmail.com"
     role: "ML Engineer"
+  - name: "Kamani Ushasri"
+    email: "ushasrikamani@gmail.com"
+    role: "Full Stack Developer"
 
-github_repo: "https://github.com/YOUR_USERNAME/YOUR_REPO"
-sandbox_link: "https://huggingface.co/spaces/YOUR_USERNAME/redrob-ranker"
-reproduce_command: "python3 rank.py --candidates ./candidates.jsonl --embeddings ./embeddings.npy --candidate-ids ./candidate_ids.npy --jd-embedding ./jd_embedding.npy --out ./submission.csv"
+github_repo: "https://github.com/sushma-vangala/Candidate-Ranking-System"
+
+sandbox_link: "https://my-candidate-ranking-system.streamlit.app"
+
+reproduce_command: "python3 rank.py --candidates ./data/candidates.jsonl --embeddings ./embeddings/embeddings.npy --candidate-ids ./embeddings/candidate_ids.npy --jd-embedding ./embeddings/jd_embedding.npy --out ./outputs/submission.csv"
 
 compute:
-  platform: "MacBook Pro"
+  platform: "Apple MacBook Air (M1)"
   cpu_cores: 8
-  ram_gb: 16
+  ram_gb: 8
   python_version: "3.9"
   os: "macOS"
   uses_gpu_for_inference: false
@@ -27,20 +32,26 @@ compute:
 
 ai_tools_used:
   - "Claude"
+  - "ChatGPT"
 
 ai_usage_summary: |
-  Used Claude for architecture discussion, code review, and iterative improvement.
-  All engineering decisions, threshold choices, and design rationale were made by the team.
-  No candidate data was fed to any external LLM.
+  AI assistants were used for brainstorming, architecture discussions, debugging,
+  documentation improvements, and code review. The ranking algorithm, scoring
+  strategy, feature engineering, adaptive weighting, implementation, testing,
+  and all final engineering decisions were completed and validated by the team.
+  No candidate data or evaluation results were shared with external AI services.
 
 methodology_summary: |
-  Two-phase hybrid ranking system. Phase 1: rule-based trap detection (honeypots,
-  keyword stuffers, behavioral ghosts). Phase 2: hybrid scoring — MiniLM embedding
-  similarity (40%), skill match with synonym awareness (20%), career fit on work
-  content not employer names (20%), career progression trajectory (10%),
-  behavioral platform signals (15%), education bonus (5%).
-  JD parsed automatically from text — no hardcoded skill lists.
-  Precomputed MiniLM embeddings enable <60s ranking on CPU with no network access.
+  Hybrid AI-powered candidate ranking system executed in two phases.
+  Phase 1 performs trap detection to identify honeypots, keyword stuffing,
+  and behavioral anomalies. Phase 2 computes a weighted hybrid score using
+  MiniLM semantic similarity (40%), skill matching with synonym awareness (20%),
+  career fit based on actual work experience (20%), career progression (10%),
+  behavioral hiring signals (15%), and education bonus (5%). The system
+  automatically extracts requirements from the Job Description, adapts scoring
+  weights based on JD emphasis, generates explainable reasoning for every
+  recommendation, and performs CPU-only inference using precomputed MiniLM
+  embeddings without requiring internet access.
 
 declarations:
   read_submission_spec: true
